@@ -1,0 +1,21 @@
+
+# System files
+*.log
+*.tmp
+*.bak
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Hidden directories
+.*
+!/.gitignore
+
+# Parent directory files
+../*
+../../*
+
+# Build outputs
+dist/
+build/
+node_modules/
