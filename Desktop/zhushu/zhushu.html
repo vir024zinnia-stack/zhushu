@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿﻿  <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -21,7 +21,8 @@
                         'soft-gold': '#d4b87a',
                         'mint': '#8fb9a8',
                         'stone': '#9a9a9a',
-                        'peach': '#e8c5b0'
+                        'peach': '#e8c5b0',
+                        'vermilion': '#c41e3a'
                     },
                     fontFamily: {
                         sans: ['KaiTi', 'STKaiti', 'SimSun', 'STSong', '-apple-system', 'system-ui', 'sans-serif'],
@@ -63,6 +64,10 @@
             .slide-up {
                 animation: slideUp 0.4s ease-out forwards;
             }
+            .glass-effect {
+                background: rgba(255, 255, 255, 0.85);
+                backdrop-filter: blur(10px);
+            }
         }
 
         @keyframes fadeIn {
@@ -86,16 +91,23 @@
         h1, h2, h3, h4, h5, h6 {
             font-family: 'KaiTi', 'STKaiti', 'SimSun', 'STSong', serif;
         }
+
+        .lazy-image {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .lazy-image.loaded {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
-    <!-- 首页 -->
     <div id="home" class="tab-content page-transition">
-        <!-- 顶部区域 -->
         <div class="px-4 pt-8 pb-4">
             <div class="flex items-center justify-between">
                 <div>
-                    <h1 class="text-3xl font-bold gradient-text">筑书</h1>
+                    <h1 class="text-3xl font-bold text-warm">筑书</h1>
                     <p class="text-sm text-stone">中国古建筑八大派系数字展馆</p>
                 </div>
                 <div class="w-12 h-12 bg-warm/10 rounded-full flex items-center justify-center">
@@ -104,33 +116,32 @@
             </div>
         </div>
 
-        <!-- 轮播图 -->
         <div class="px-4 mb-6">
             <div class="relative rounded-soft overflow-hidden soft-shadow aspect-video">
                 <div class="carousel-inner flex h-full">
                     <div class="carousel-item w-full flex-shrink-0 h-full">
-                        <img src="assets/pavilions/京派.jpg" alt="京派建筑" class="w-full h-full object-cover">
+                        <img data-src="assets/pavilions/京派.png" alt="京派建筑" class="w-full h-full object-cover lazy-image">
                     </div>
                     <div class="carousel-item w-full flex-shrink-0 h-full">
-                        <img src="assets/pavilions/晋派.jpg" alt="晋派建筑" class="w-full h-full object-cover">
+                        <img data-src="assets/pavilions/晋派.png" alt="晋派建筑" class="w-full h-full object-cover lazy-image">
                     </div>
                     <div class="carousel-item w-full flex-shrink-0 h-full">
-                        <img src="assets/pavilions/苏派.jpg" alt="苏派建筑" class="w-full h-full object-cover">
+                        <img data-src="assets/pavilions/苏派.jpg" alt="苏派建筑" class="w-full h-full object-cover lazy-image">
                     </div>
                     <div class="carousel-item w-full flex-shrink-0 h-full">
-                        <img src="assets/pavilions/徽派.jpg" alt="徽派建筑" class="w-full h-full object-cover">
+                        <img data-src="assets/pavilions/徽派.png" alt="徽派建筑" class="w-full h-full object-cover lazy-image">
                     </div>
                     <div class="carousel-item w-full flex-shrink-0 h-full">
-                        <img src="assets/pavilions/闽派.jpg" alt="闽派建筑" class="w-full h-full object-cover">
+                        <img data-src="assets/pavilions/闽派.jpg" alt="闽派建筑" class="w-full h-full object-cover lazy-image">
                     </div>
                     <div class="carousel-item w-full flex-shrink-0 h-full">
-                        <img src="assets/pavilions/粤派.jpg" alt="粤派建筑" class="w-full h-full object-cover">
+                        <img data-src="assets/pavilions/粤派.jpg" alt="粤派建筑" class="w-full h-full object-cover lazy-image">
                     </div>
                     <div class="carousel-item w-full flex-shrink-0 h-full">
-                        <img src="assets/pavilions/川派.jpg" alt="川派建筑" class="w-full h-full object-cover">
+                        <img data-src="assets/pavilions/川派.jpg" alt="川派建筑" class="w-full h-full object-cover lazy-image">
                     </div>
                     <div class="carousel-item w-full flex-shrink-0 h-full">
-                        <img src="assets/pavilions/海派.jpg" alt="海派建筑" class="w-full h-full object-cover">
+                        <img data-src="assets/pavilions/海派.jpg" alt="海派建筑" class="w-full h-full object-cover lazy-image">
                     </div>
                 </div>
                 <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
@@ -146,7 +157,6 @@
             </div>
         </div>
 
-        <!-- 学徒故事引导 -->
         <div class="px-4 mb-6">
             <div class="bg-white rounded-soft soft-shadow p-5 slide-up">
                 <div class="flex items-center mb-4">
@@ -163,14 +173,13 @@
             </div>
         </div>
 
-        <!-- 游览路线 -->
         <div class="px-4 mb-6">
             <div class="bg-white rounded-soft soft-shadow p-5 fade-in">
                 <div class="flex items-center mb-4">
                     <i data-lucide="route" class="text-warm mr-2"></i>
                     <h3 class="font-bold text-lg">游览路线</h3>
                 </div>
-                <div class="flex items-center justify-between text-sm">
+                <div class="flex items-center justify-between text-sm mb-3">
                     <div class="flex flex-col items-center">
                         <div class="w-8 h-8 bg-vermilion text-white rounded-full flex items-center justify-center text-xs font-bold">1</div>
                         <span class="text-xs text-stone mt-1">北京</span>
@@ -181,11 +190,25 @@
                         <span class="text-xs text-stone mt-1">上海</span>
                     </div>
                 </div>
-                <p class="text-xs text-stone/60 text-center mt-3">京 → 晋 → 苏 → 徽 → 闽 → 粤 → 川 → 海</p>
+                <p class="text-xs text-stone/60 text-center">京 → 晋 → 苏 → 徽 → 闽 → 粤 → 川 → 海</p>
             </div>
         </div>
 
-        <!-- 关键词云 -->
+        <div class="px-4 mb-6">
+            <div class="bg-white rounded-soft soft-shadow overflow-hidden">
+                <div class="flex items-center p-4 border-b border-sand/30">
+                    <i data-lucide="map" class="text-warm mr-2"></i>
+                    <h3 class="font-bold text-lg">学徒游览路线图</h3>
+                </div>
+                <div class="p-2">
+                    <img data-src="assets/journey/学徒游览路线.png" alt="学徒游览路线图" class="w-full rounded-lg lazy-image">
+                </div>
+                <div class="px-4 pb-4">
+                    <p class="text-xs text-stone/60 text-center mt-2">从北京到上海，探寻八大建筑派系的文化之旅</p>
+                </div>
+            </div>
+        </div>
+
         <div class="px-4 mb-20">
             <div class="bg-white/90 rounded-soft soft-shadow p-5">
                 <div class="flex items-center mb-4">
@@ -210,7 +233,6 @@
         </div>
     </div>
 
-    <!-- 展馆页 -->
     <div id="pavilion" class="tab-content page-transition hidden">
         <div class="px-4 pt-6 pb-4">
             <div class="flex items-center justify-between mb-4">
@@ -220,16 +242,14 @@
                 <h2 class="text-xl font-bold">建筑展馆</h2>
                 <div class="w-10"></div>
             </div>
-            
-            <!-- 展馆列表 -->
+
             <div class="space-y-6">
-                <!-- 京派 -->
                 <div class="pavilion-card bg-white rounded-soft soft-shadow overflow-hidden" data-station="1">
                     <div class="bg-vermilion/90 text-white px-4 py-2 text-sm font-medium flex items-center">
                         <i data-lucide="map-pin" class="mr-2"></i>
                         第 1/8 站 · 京派建筑
                     </div>
-                    <img src="assets/pavilions/京派.jpg" alt="京派建筑" class="w-full h-auto object-contain bg-sand/30">
+                    <img data-src="assets/pavilions/京派.png" alt="京派建筑" class="w-full h-auto object-contain bg-sand/30 lazy-image">
                     <div class="p-5">
                         <h3 class="font-bold text-lg mb-2">紫禁城的辉煌</h3>
                         <p class="text-sm text-wood/80 leading-relaxed">
@@ -251,13 +271,12 @@
                     </div>
                 </div>
 
-                <!-- 晋派 -->
                 <div class="pavilion-card bg-white rounded-soft soft-shadow overflow-hidden" data-station="2">
                     <div class="bg-amber-500 text-white px-4 py-2 text-sm font-medium flex items-center">
                         <i data-lucide="map-pin" class="mr-2"></i>
                         第 2/8 站 · 晋派建筑
                     </div>
-                    <img src="assets/pavilions/晋派.jpg" alt="晋派建筑" class="w-full h-auto object-contain bg-sand/30">
+                    <img data-src="assets/pavilions/晋派.png" alt="晋派建筑" class="w-full h-auto object-contain bg-sand/30 lazy-image">
                     <div class="p-5">
                         <h3 class="font-bold text-lg mb-2">大院的故事</h3>
                         <p class="text-sm text-wood/80 leading-relaxed">
@@ -279,13 +298,12 @@
                     </div>
                 </div>
 
-                <!-- 苏派 -->
                 <div class="pavilion-card bg-white rounded-soft soft-shadow overflow-hidden" data-station="3">
                     <div class="bg-green-600 text-white px-4 py-2 text-sm font-medium flex items-center">
                         <i data-lucide="map-pin" class="mr-2"></i>
                         第 3/8 站 · 苏派建筑
                     </div>
-                    <img src="assets/pavilions/苏派.jpg" alt="苏派建筑" class="w-full h-auto object-contain bg-sand/30">
+                    <img data-src="assets/pavilions/苏派.jpg" alt="苏派建筑" class="w-full h-auto object-contain bg-sand/30 lazy-image">
                     <div class="p-5">
                         <h3 class="font-bold text-lg mb-2">江南的诗意</h3>
                         <p class="text-sm text-wood/80 leading-relaxed">
@@ -307,13 +325,12 @@
                     </div>
                 </div>
 
-                <!-- 徽派 -->
                 <div class="pavilion-card bg-white rounded-soft soft-shadow overflow-hidden" data-station="4">
                     <div class="bg-gray-600 text-white px-4 py-2 text-sm font-medium flex items-center">
                         <i data-lucide="map-pin" class="mr-2"></i>
                         第 4/8 站 · 徽派建筑
                     </div>
-                    <img src="assets/pavilions/徽派.jpg" alt="徽派建筑" class="w-full h-auto object-contain bg-sand/30">
+                    <img data-src="assets/pavilions/徽派.png" alt="徽派建筑" class="w-full h-auto object-contain bg-sand/30 lazy-image">
                     <div class="p-5">
                         <h3 class="font-bold text-lg mb-2">马头墙的韵律</h3>
                         <p class="text-sm text-wood/80 leading-relaxed">
@@ -335,13 +352,12 @@
                     </div>
                 </div>
 
-                <!-- 闽派 -->
                 <div class="pavilion-card bg-white rounded-soft soft-shadow overflow-hidden" data-station="5">
                     <div class="bg-orange-500 text-white px-4 py-2 text-sm font-medium flex items-center">
                         <i data-lucide="map-pin" class="mr-2"></i>
                         第 5/8 站 · 闽派建筑
                     </div>
-                    <img src="assets/pavilions/闽派.jpg" alt="闽派建筑" class="w-full h-auto object-contain bg-sand/30">
+                    <img data-src="assets/pavilions/闽派.jpg" alt="闽派建筑" class="w-full h-auto object-contain bg-sand/30 lazy-image">
                     <div class="p-5">
                         <h3 class="font-bold text-lg mb-2">土楼的奇观</h3>
                         <p class="text-sm text-wood/80 leading-relaxed">
@@ -363,13 +379,12 @@
                     </div>
                 </div>
 
-                <!-- 粤派 -->
                 <div class="pavilion-card bg-white rounded-soft soft-shadow overflow-hidden" data-station="6">
                     <div class="bg-blue-600 text-white px-4 py-2 text-sm font-medium flex items-center">
                         <i data-lucide="map-pin" class="mr-2"></i>
                         第 6/8 站 · 粤派建筑
                     </div>
-                    <img src="assets/pavilions/粤派.jpg" alt="粤派建筑" class="w-full h-auto object-contain bg-sand/30">
+                    <img data-src="assets/pavilions/粤派.jpg" alt="粤派建筑" class="w-full h-auto object-contain bg-sand/30 lazy-image">
                     <div class="p-5">
                         <h3 class="font-bold text-lg mb-2">岭南的风情</h3>
                         <p class="text-sm text-wood/80 leading-relaxed">
@@ -391,13 +406,12 @@
                     </div>
                 </div>
 
-                <!-- 川派 -->
                 <div class="pavilion-card bg-white rounded-soft soft-shadow overflow-hidden" data-station="7">
                     <div class="bg-red-600 text-white px-4 py-2 text-sm font-medium flex items-center">
                         <i data-lucide="map-pin" class="mr-2"></i>
                         第 7/8 站 · 川派建筑
                     </div>
-                    <img src="assets/pavilions/川派.jpg" alt="川派建筑" class="w-full h-auto object-contain bg-sand/30">
+                    <img data-src="assets/pavilions/川派.jpg" alt="川派建筑" class="w-full h-auto object-contain bg-sand/30 lazy-image">
                     <div class="p-5">
                         <h3 class="font-bold text-lg mb-2">吊脚楼的韵味</h3>
                         <p class="text-sm text-wood/80 leading-relaxed">
@@ -419,13 +433,12 @@
                     </div>
                 </div>
 
-                <!-- 海派 -->
                 <div class="pavilion-card bg-white rounded-soft soft-shadow overflow-hidden" data-station="8">
                     <div class="bg-purple-600 text-white px-4 py-2 text-sm font-medium flex items-center">
                         <i data-lucide="map-pin" class="mr-2"></i>
                         第 8/8 站 · 海派建筑
                     </div>
-                    <img src="assets/pavilions/海派.jpg" alt="海派建筑" class="w-full h-auto object-contain bg-sand/30">
+                    <img data-src="assets/pavilions/海派.jpg" alt="海派建筑" class="w-full h-auto object-contain bg-sand/30 lazy-image">
                     <div class="p-5">
                         <h3 class="font-bold text-lg mb-2">中西的融合</h3>
                         <p class="text-sm text-wood/80 leading-relaxed">
@@ -450,7 +463,6 @@
         </div>
     </div>
 
-    <!-- 护照页 -->
     <div id="passport" class="tab-content page-transition hidden">
         <div class="px-4 pt-6 pb-4">
             <div class="flex items-center justify-between mb-6">
@@ -461,7 +473,6 @@
                 <div class="w-10"></div>
             </div>
 
-            <!-- 称号 -->
             <div class="bg-gradient-to-br from-warm/10 to-gold/10 rounded-soft p-5 mb-6">
                 <div class="flex items-center justify-between">
                     <div>
@@ -480,7 +491,6 @@
                 </div>
             </div>
 
-            <!-- 印章收集 -->
             <div class="bg-white rounded-soft soft-shadow p-5 mb-6">
                 <h3 class="font-bold mb-4 flex items-center">
                     <i data-lucide="stamp" class="text-warm mr-2"></i>
@@ -488,41 +498,40 @@
                 </h3>
                 <div class="grid grid-cols-4 gap-3">
                     <div id="stamp-京派" class="aspect-square bg-cream rounded-xl border-2 border-dashed border-sand flex flex-col items-center justify-center">
-                        <img src="assets/stamps/stamp-京派.png" alt="京派印章" class="w-10 h-10 opacity-30 stamp-image">
+                        <img data-src="assets/stamps/stamp-京派.png" alt="京派印章" class="w-10 h-10 opacity-30 stamp-image lazy-image">
                         <span class="text-xs mt-1 text-wood/60">京派</span>
                     </div>
                     <div id="stamp-晋派" class="aspect-square bg-cream rounded-xl border-2 border-dashed border-sand flex flex-col items-center justify-center">
-                        <img src="assets/stamps/stamp-晋派.png" alt="晋派印章" class="w-10 h-10 opacity-30 stamp-image">
+                        <img data-src="assets/stamps/stamp-晋派.png" alt="晋派印章" class="w-10 h-10 opacity-30 stamp-image lazy-image">
                         <span class="text-xs mt-1 text-wood/60">晋派</span>
                     </div>
                     <div id="stamp-苏派" class="aspect-square bg-cream rounded-xl border-2 border-dashed border-sand flex flex-col items-center justify-center">
-                        <img src="assets/stamps/stamp-苏派.png" alt="苏派印章" class="w-10 h-10 opacity-30 stamp-image">
+                        <img data-src="assets/stamps/stamp-苏派.png" alt="苏派印章" class="w-10 h-10 opacity-30 stamp-image lazy-image">
                         <span class="text-xs mt-1 text-wood/60">苏派</span>
                     </div>
                     <div id="stamp-徽派" class="aspect-square bg-cream rounded-xl border-2 border-dashed border-sand flex flex-col items-center justify-center">
-                        <img src="assets/stamps/stamp-徽派.png" alt="徽派印章" class="w-10 h-10 opacity-30 stamp-image">
+                        <img data-src="assets/stamps/stamp-徽派.png" alt="徽派印章" class="w-10 h-10 opacity-30 stamp-image lazy-image">
                         <span class="text-xs mt-1 text-wood/60">徽派</span>
                     </div>
                     <div id="stamp-闽派" class="aspect-square bg-cream rounded-xl border-2 border-dashed border-sand flex flex-col items-center justify-center">
-                        <img src="assets/stamps/stamp-闽派.png" alt="闽派印章" class="w-10 h-10 opacity-30 stamp-image">
+                        <img data-src="assets/stamps/stamp-闽派.png" alt="闽派印章" class="w-10 h-10 opacity-30 stamp-image lazy-image">
                         <span class="text-xs mt-1 text-wood/60">闽派</span>
                     </div>
                     <div id="stamp-粤派" class="aspect-square bg-cream rounded-xl border-2 border-dashed border-sand flex flex-col items-center justify-center">
-                        <img src="assets/stamps/stamp-粤派.png" alt="粤派印章" class="w-10 h-10 opacity-30 stamp-image">
+                        <img data-src="assets/stamps/stamp-粤派.png" alt="粤派印章" class="w-10 h-10 opacity-30 stamp-image lazy-image">
                         <span class="text-xs mt-1 text-wood/60">粤派</span>
                     </div>
                     <div id="stamp-川派" class="aspect-square bg-cream rounded-xl border-2 border-dashed border-sand flex flex-col items-center justify-center">
-                        <img src="assets/stamps/stamp-川派.png" alt="川派印章" class="w-10 h-10 opacity-30 stamp-image">
+                        <img data-src="assets/stamps/stamp-川派.png" alt="川派印章" class="w-10 h-10 opacity-30 stamp-image lazy-image">
                         <span class="text-xs mt-1 text-wood/60">川派</span>
                     </div>
                     <div id="stamp-海派" class="aspect-square bg-cream rounded-xl border-2 border-dashed border-sand flex flex-col items-center justify-center">
-                        <img src="assets/stamps/stamp-海派.png" alt="海派印章" class="w-10 h-10 opacity-30 stamp-image">
+                        <img data-src="assets/stamps/stamp-海派.png" alt="海派印章" class="w-10 h-10 opacity-30 stamp-image lazy-image">
                         <span class="text-xs mt-1 text-wood/60">海派</span>
                     </div>
                 </div>
             </div>
 
-            <!-- 称号说明 -->
             <div class="bg-white rounded-soft soft-shadow p-5">
                 <h3 class="font-bold mb-4 flex items-center">
                     <i data-lucide="award" class="text-warm mr-2"></i>
@@ -554,7 +563,6 @@
         </div>
     </div>
 
-    <!-- 预约页 -->
     <div id="reservation" class="tab-content page-transition hidden">
         <div class="px-4 pt-6 pb-4">
             <div class="flex items-center justify-between mb-6">
@@ -565,21 +573,19 @@
                 <div class="w-10"></div>
             </div>
 
-            <!-- 已有预约 -->
             <div id="existingReservation" class="bg-warm/10 rounded-soft p-5 mb-6 hidden">
                 <div class="flex items-center justify-between mb-3">
                     <h3 class="font-medium text-warm">我的预约</h3>
                     <button onclick="clearReservation()" class="text-xs text-stone/60">取消预约</button>
                 </div>
                 <div class="space-y-2 text-sm">
-                    <p><span class="text-stone/60">预约编号：</span><span class="text-charcoal">ZSxxxxxx</span></p>
+                    <p><span class="text-stone/60">预约编号：</span><span class="text-charcoal" id="resOrderNo"></span></p>
                     <p><span class="text-stone/60">参观日期：</span><span class="text-charcoal" id="resDate"></span></p>
                     <p><span class="text-stone/60">参观时段：</span><span class="text-charcoal" id="resTime"></span></p>
                     <p><span class="text-stone/60">预约人：</span><span class="text-charcoal" id="resName"></span></p>
                 </div>
             </div>
 
-            <!-- 预约表单 -->
             <div class="bg-white rounded-soft soft-shadow p-6">
                 <div class="mb-6">
                     <label class="block font-medium mb-2 text-wood/80">选择日期</label>
@@ -622,7 +628,6 @@
         </div>
     </div>
 
-    <!-- 关于页 -->
     <div id="about" class="tab-content page-transition hidden">
         <div class="px-4 pt-6 pb-4">
             <div class="flex items-center justify-between mb-6">
@@ -689,10 +694,9 @@
         </div>
     </div>
 
-    <!-- 底部导航 -->
     <div class="fixed bottom-0 left-0 right-0 glass-effect border-t border-sand/30 z-50">
         <div class="flex items-center justify-around py-2">
-            <button onclick="switchTab('home')" class="flex flex-col items-center py-1 px-4 tab-btn active">
+            <button onclick="switchTab('home')" class="flex flex-col items-center py-1 px-4 tab-btn">
                 <i data-lucide="home" class="text-lg text-warm"></i>
                 <span class="text-xs text-warm mt-1">首页</span>
             </button>
@@ -716,20 +720,19 @@
     </div>
 
     <script>
-        // 切换标签
         function switchTab(tabName) {
             document.querySelectorAll('.tab-content').forEach(tab => {
                 tab.classList.add('hidden');
             });
             document.getElementById(tabName).classList.remove('hidden');
-            
+
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.querySelector('i').classList.remove('text-warm');
                 btn.querySelector('i').classList.add('text-wood/60');
                 btn.querySelector('span').classList.remove('text-warm');
                 btn.querySelector('span').classList.add('text-wood/60');
             });
-            
+
             const activeBtn = document.querySelector(`.tab-btn:has(button[onclick*="${tabName}"])`);
             if (activeBtn) {
                 activeBtn.querySelector('i').classList.remove('text-wood/60');
@@ -737,11 +740,10 @@
                 activeBtn.querySelector('span').classList.remove('text-wood/60');
                 activeBtn.querySelector('span').classList.add('text-warm');
             }
-            
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // 开始游览
         function startJourney() {
             switchTab('pavilion');
             setTimeout(() => {
@@ -749,7 +751,6 @@
             }, 300);
         }
 
-        // 下一站
         function nextPavilion(station) {
             const nextStation = station + 1;
             const element = document.querySelector(`[data-station="${nextStation}"]`);
@@ -758,7 +759,6 @@
             }
         }
 
-        // 上一站
         function prevPavilion(station) {
             const prevStation = station - 1;
             const element = document.querySelector(`[data-station="${prevStation}"]`);
@@ -767,7 +767,6 @@
             }
         }
 
-        // 盖章打卡
         function stampPavilion(name, station) {
             let stamps = JSON.parse(localStorage.getItem('stamps') || '[]');
             if (!stamps.includes(name)) {
@@ -780,11 +779,10 @@
             }
         }
 
-        // 更新护照
         function updatePassport() {
             const stamps = JSON.parse(localStorage.getItem('stamps') || '[]');
             const pavilions = ['京派', '晋派', '苏派', '徽派', '闽派', '粤派', '川派', '海派'];
-            
+
             pavilions.forEach((pavilion) => {
                 const stampItem = document.getElementById(`stamp-${pavilion}`);
                 if (stampItem) {
@@ -798,15 +796,15 @@
                     }
                 }
             });
-            
+
             const progress = (stamps.length / pavilions.length) * 100;
             document.getElementById('progressBar').style.width = `${progress}%`;
             document.getElementById('stampCount').textContent = `${stamps.length}/${pavilions.length}`;
-            
+
             const titleBadge = document.getElementById('titleBadge');
             let title = '初学者';
             let bgClass = 'bg-amber-100 text-amber-700';
-            
+
             if (stamps.length === 8) {
                 title = '建筑大师';
                 bgClass = 'bg-vermilion text-white';
@@ -820,30 +818,29 @@
                 title = '初级寻访者';
                 bgClass = 'bg-green-100 text-green-700';
             }
-            
+
             titleBadge.textContent = title;
             titleBadge.className = `${bgClass} px-3 py-1 rounded-full text-sm`;
         }
 
-        // 提交预约
         function submitReservation() {
             const date = document.getElementById('reserveDate').value;
-            const timeSlot = document.querySelector('input[name="timeSlot"]:checked').value;
+            const timeSlot = document.querySelector('input[name="timeSlot"]:checked')?.value;
             const name = document.getElementById('visitorName').value;
             const phone = document.getElementById('visitorPhone').value;
-            
-            if (!date || !name || !phone) {
+
+            if (!date || !timeSlot || !name || !phone) {
                 alert('请填写完整信息');
                 return;
             }
-            
+
             if (!/^1\d{10}$/.test(phone)) {
                 alert('请输入正确的手机号');
                 return;
             }
-            
+
             const orderNo = 'ZS' + Date.now().toString().slice(-8);
-            
+
             const reservation = {
                 orderNo,
                 date,
@@ -856,11 +853,10 @@
             alert(`预约成功！\n预约编号：${orderNo}\n参观时间：${date} ${timeSlot}`);
         }
 
-        // 显示预约信息
         function showReservation(reservation) {
             const existingDiv = document.getElementById('existingReservation');
             if (existingDiv) {
-                existingDiv.querySelector('span.text-charcoal').textContent = reservation.orderNo;
+                document.getElementById('resOrderNo').textContent = reservation.orderNo;
                 document.getElementById('resDate').textContent = reservation.date;
                 document.getElementById('resTime').textContent = reservation.timeSlot;
                 document.getElementById('resName').textContent = reservation.name;
@@ -868,7 +864,6 @@
             }
         }
 
-        // 加载预约信息
         function loadReservation() {
             const reservation = JSON.parse(localStorage.getItem('reservation') || 'null');
             if (reservation) {
@@ -876,7 +871,6 @@
             }
         }
 
-        // 取消预约
         function clearReservation() {
             if (confirm('确定要取消预约吗？')) {
                 localStorage.removeItem('reservation');
@@ -885,11 +879,10 @@
             }
         }
 
-        // 轮播图
         let carouselIndex = 0;
         const carouselInner = document.querySelector('.carousel-inner');
         const carouselDots = document.querySelectorAll('.carousel-dot');
-        
+
         function nextSlide() {
             const items = document.querySelectorAll('.carousel-item');
             carouselIndex = (carouselIndex + 1) % items.length;
@@ -900,19 +893,13 @@
             });
         }
 
-        // 初始化
-        window.onload = function() {
-            lucide.createIcons();
-            
-            const tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            document.getElementById('reserveDate').value = tomorrow.toISOString().split('T')[0];
-            document.getElementById('reserveDate').min = tomorrow.toISOString().split('T')[0];
-            
+        function initCarousel() {
+            carouselInner.style.transform = 'translateX(0)';
+            carouselInner.style.transition = 'transform 0.5s ease-in-out';
             setInterval(nextSlide, 4000);
             updatePassport();
             loadReservation();
-            
+
             carouselDots.forEach((dot, index) => {
                 dot.addEventListener('click', () => {
                     carouselIndex = index;
@@ -923,7 +910,39 @@
                     });
                 });
             });
-        };
+        }
+
+        function initLazyLoad() {
+            const lazyImages = document.querySelectorAll('img[data-src]');
+
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        const src = img.dataset.src;
+                        if (src) {
+                            img.src = src;
+                            img.classList.remove('lazy-image');
+                            img.classList.add('loaded');
+                        }
+                        observer.unobserve(img);
+                    }
+                });
+            }, {
+                rootMargin: '50px 0px',
+                threshold: 0.01
+            });
+
+            lazyImages.forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initCarousel();
+            initLazyLoad();
+            lucide.createIcons();
+        });
     </script>
 </body>
 </html>

@@ -1,30 +1,21 @@
-# Windows
+
+# System files
+*.log
+*.tmp
+*.bak
 Thumbs.db
-Desktop.ini
-*.lnk
-
-# IDE
-.vscode/
-.idea/
-
-# Python
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-
-# Node
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Local files
 .DS_Store
-*.swp
-*.swo
-*~
+desktop.ini
 
-# Server
-启动服务器.bat
+# Hidden directories
+.*
+!/.gitignore
+
+# Parent directory files
+../*
+../../*
+
+# Build outputs
+dist/
+build/
+node_modules/
