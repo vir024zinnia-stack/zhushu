@@ -1,0 +1,954 @@
+???????<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>筑书 - 中国古建筑八大派系数字展馆</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'paper': '#fafafa',
+                        'cream': '#f5f5f0',
+                        'sand': '#e8e4dc',
+                        'wood': '#4a4a4a',
+                        'charcoal': '#2d2d2d',
+                        'warm': '#8b7355',
+                        'gold': '#c9a962',
+                        'soft-gold': '#d4b87a',
+                        'mint': '#8fb9a8',
+                        'stone': '#9a9a9a',
+                        'peach': '#e8c5b0'
+                    },
+                    fontFamily: {
+                        sans: ['KaiTi', 'STKaiti', 'SimSun', 'STSong', '-apple-system', 'system-ui', 'sans-serif'],
+                        kai: ['KaiTi', 'STKaiti', 'serif'],
+                        song: ['SimSun', 'STSong', 'serif']
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px rgba(0, 0, 0, 0.06)',
+                        'elevated': '0 8px 30px rgba(0, 0, 0, 0.08)',
+                        'inner': 'inset 0 2px 10px rgba(0, 0, 0, 0.05)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .soft-shadow {
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            }
+            .elevated-shadow {
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            }
+            .rounded-soft {
+                border-radius: 20px;
+            }
+            .rounded-button {
+                border-radius: 16px;
+            }
+            .page-transition {
+                transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            }
+            .fade-in {
+                animation: fadeIn 0.5s ease-out forwards;
+            }
+            .slide-up {
+                animation: slideUp 0.4s ease-out forwards;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        body {
+            font-family: 'KaiTi', 'STKaiti', 'SimSun', 'STSong', serif;
+            overscroll-behavior: none;
+            overflow-x: hidden;
+            background: linear-gradient(180deg, #fafafa 0%, #f5f5f0 100%);
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'KaiTi', 'STKaiti', 'SimSun', 'STSong', serif;
+        }
+    </style>
+</head>
+<body>
+    <!-- 首页 -->
+    <div id="home" class="tab-content page-transition">
+        <!-- 顶部区域 -->
+        <div class="px-4 pt-8 pb-4">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold gradient-text">筑书</h1>
+                    <p class="text-sm text-stone">中国古建筑八大派系数字展馆</p>
+                </div>
+                <div class="w-12 h-12 bg-warm/10 rounded-full flex items-center justify-center">
+                    <i data-lucide="book-open" class="text-warm text-xl"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- 轮播图 -->
+        <div class="px-4 mb-6">
+            <div class="relative rounded-soft overflow-hidden soft-shadow aspect-video">
+                <div class="carousel-inner flex h-full">
+                    <div class="carousel-item w-full flex-shrink-0 h-full">
+                        <img src="assets/pavilions/京派.png" alt="京派建筑" class="w-full h-full object-cover">
+                    </div>
+                    <div class="carousel-item w-full flex-shrink-0 h-full">
+                        <img src="assets/pavilions/晋派.png" alt="晋派建筑" class="w-full h-full object-cover">
+                    </div>
+                    <div class="carousel-item w-full flex-shrink-0 h-full">
+                        <img src="assets/pavilions/苏派.jpg" alt="苏派建筑" class="w-full h-full object-cover">
+                    </div>
+                    <div class="carousel-item w-full flex-shrink-0 h-full">
+                        <img src="assets/pavilions/徽派.png" alt="徽派建筑" class="w-full h-full object-cover">
+                    </div>
+                    <div class="carousel-item w-full flex-shrink-0 h-full">
+                        <img src="assets/pavilions/闽派.jpg" alt="闽派建筑" class="w-full h-full object-cover">
+                    </div>
+                    <div class="carousel-item w-full flex-shrink-0 h-full">
+                        <img src="assets/pavilions/粤派.jpg" alt="粤派建筑" class="w-full h-full object-cover">
+                    </div>
+                    <div class="carousel-item w-full flex-shrink-0 h-full">
+                        <img src="assets/pavilions/川派.jpg" alt="川派建筑" class="w-full h-full object-cover">
+                    </div>
+                    <div class="carousel-item w-full flex-shrink-0 h-full">
+                        <img src="assets/pavilions/海派.jpg" alt="海派建筑" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+                    <span class="carousel-dot w-2 h-2 rounded-full bg-white/80 cursor-pointer"></span>
+                    <span class="carousel-dot w-2 h-2 rounded-full bg-white/40 cursor-pointer"></span>
+                    <span class="carousel-dot w-2 h-2 rounded-full bg-white/40 cursor-pointer"></span>
+                    <span class="carousel-dot w-2 h-2 rounded-full bg-white/40 cursor-pointer"></span>
+                    <span class="carousel-dot w-2 h-2 rounded-full bg-white/40 cursor-pointer"></span>
+                    <span class="carousel-dot w-2 h-2 rounded-full bg-white/40 cursor-pointer"></span>
+                    <span class="carousel-dot w-2 h-2 rounded-full bg-white/40 cursor-pointer"></span>
+                    <span class="carousel-dot w-2 h-2 rounded-full bg-white/40 cursor-pointer"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 学徒故事引导 -->
+        <div class="px-4 mb-6">
+            <div class="bg-white rounded-soft soft-shadow p-5 slide-up">
+                <div class="flex items-center mb-4">
+                    <div class="w-1 h-6 bg-warm/50 rounded-full mr-3"></div>
+                    <h3 class="font-bold text-lg">学徒之旅</h3>
+                </div>
+                <p class="text-sm text-wood/80 leading-relaxed mb-4">
+                    你将化身一名建筑学徒，从京城出发，穿越八千里路云和月，探访中国古建筑八大派系的独特魅力。每到一处，别忘了盖上你的印章，记录这段珍贵的旅程。
+                </p>
+                <button onclick="startJourney()" class="w-full bg-warm/15 text-warm py-3.5 rounded-button font-medium border border-warm/30 active:bg-warm/25 transition-all duration-200 flex items-center justify-center">
+                    <i data-lucide="arrow-right" class="mr-2"></i>
+                    开始游览
+                </button>
+            </div>
+        </div>
+
+        <!-- 游览路线 -->
+        <div class="px-4 mb-6">
+            <div class="bg-white rounded-soft soft-shadow p-5 fade-in">
+                <div class="flex items-center mb-4">
+                    <i data-lucide="route" class="text-warm mr-2"></i>
+                    <h3 class="font-bold text-lg">游览路线</h3>
+                </div>
+                <div class="flex items-center justify-between text-sm">
+                    <div class="flex flex-col items-center">
+                        <div class="w-8 h-8 bg-vermilion text-white rounded-full flex items-center justify-center text-xs font-bold">1</div>
+                        <span class="text-xs text-stone mt-1">北京</span>
+                    </div>
+                    <div class="flex-1 h-0.5 bg-gradient-to-r from-vermilion via-warm to-gold mx-2"></div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-8 h-8 bg-gold text-white rounded-full flex items-center justify-center text-xs font-bold">8</div>
+                        <span class="text-xs text-stone mt-1">上海</span>
+                    </div>
+                </div>
+                <p class="text-xs text-stone/60 text-center mt-3">京 → 晋 → 苏 → 徽 → 闽 → 粤 → 川 → 海</p>
+            </div>
+        </div>
+
+        <!-- 关键词云 -->
+        <div class="px-4 mb-20">
+            <div class="bg-white/90 rounded-soft soft-shadow p-5">
+                <div class="flex items-center mb-4">
+                    <div class="w-1 h-6 bg-warm/50 rounded-full mr-3"></div>
+                    <h3 class="font-bold text-lg">关键词云</h3>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-warm/10 text-warm px-3 py-1 rounded-full text-sm">京派</span>
+                    <span class="bg-warm/8 text-warm/80 px-3 py-1 rounded-full text-xs">晋派</span>
+                    <span class="bg-warm/10 text-warm px-3 py-1 rounded-full text-sm">苏派</span>
+                    <span class="bg-warm/8 text-warm/80 px-3 py-1 rounded-full text-xs">徽派</span>
+                    <span class="bg-warm/10 text-warm px-3 py-1 rounded-full text-sm">闽派</span>
+                    <span class="bg-warm/8 text-warm/80 px-3 py-1 rounded-full text-xs">粤派</span>
+                    <span class="bg-warm/10 text-warm px-3 py-1 rounded-full text-sm">川派</span>
+                    <span class="bg-warm/8 text-warm/80 px-3 py-1 rounded-full text-xs">海派</span>
+                    <span class="bg-gold/10 text-gold px-4 py-1 rounded-full text-sm">南北巡礼</span>
+                    <span class="bg-mint/10 text-mint px-4 py-1 rounded-full text-sm">文化传承</span>
+                    <span class="bg-peach/20 text-warm/70 px-3 py-1 rounded-full text-xs">建筑艺术</span>
+                    <span class="bg-warm/5 text-warm/60 px-3 py-1 rounded-full text-xs">印章收集</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 展馆页 -->
+    <div id="pavilion" class="tab-content page-transition hidden">
+        <div class="px-4 pt-6 pb-4">
+            <div class="flex items-center justify-between mb-4">
+                <button onclick="switchTab('home')" class="w-10 h-10 bg-white rounded-full soft-shadow flex items-center justify-center text-wood">
+                    <i data-lucide="arrow-left"></i>
+                </button>
+                <h2 class="text-xl font-bold">建筑展馆</h2>
+                <div class="w-10"></div>
+            </div>
+            
+            <!-- 展馆列表 -->
+            <div class="space-y-6">
+                <!-- 京派 -->
+                <div class="pavilion-card bg-white rounded-soft soft-shadow overflow-hidden" data-station="1">
+                    <div class="bg-vermilion/90 text-white px-4 py-2 text-sm font-medium flex items-center">
+                        <i data-lucide="map-pin" class="mr-2"></i>
+                        第 1/8 站 · 京派建筑
+                    </div>
+                    <img src="assets/pavilions/京派.png" alt="京派建筑" class="w-full h-auto object-contain bg-sand/30">
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg mb-2">紫禁城的辉煌</h3>
+                        <p class="text-sm text-wood/80 leading-relaxed">
+                            京派建筑以北京故宫为代表，体现了皇家建筑的宏伟与庄严。红墙黄瓦、飞檐斗拱，展现了中国古代建筑的最高技艺。
+                        </p>
+                        <button onclick="stampPavilion('京派', 1)" class="w-full bg-vermilion/10 text-vermilion py-3 rounded-button font-medium border border-vermilion/30 mt-4 active:bg-vermilion/20 transition-all">
+                            <i data-lucide="stamp" class="inline mr-2"></i>
+                            盖章打卡
+                        </button>
+                    </div>
+                    <div class="flex justify-between p-4 bg-cream border-t">
+                        <button class="text-warm text-sm" disabled>
+                            <i data-lucide="chevron-left" class="inline mr-1"></i>上一站
+                        </button>
+                        <span class="text-wood/50 text-sm">1 / 8</span>
+                        <button onclick="nextPavilion(1)" class="text-warm text-sm">
+                            下一站 <i data-lucide="chevron-right" class="inline ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 晋派 -->
+                <div class="pavilion-card bg-white rounded-soft soft-shadow overflow-hidden" data-station="2">
+                    <div class="bg-amber-500 text-white px-4 py-2 text-sm font-medium flex items-center">
+                        <i data-lucide="map-pin" class="mr-2"></i>
+                        第 2/8 站 · 晋派建筑
+                    </div>
+                    <img src="assets/pavilions/晋派.png" alt="晋派建筑" class="w-full h-auto object-contain bg-sand/30">
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg mb-2">大院的故事</h3>
+                        <p class="text-sm text-wood/80 leading-relaxed">
+                            晋派建筑以山西大院为代表，高墙深院、雕梁画栋，体现了晋商文化的繁荣与家族的凝聚力。
+                        </p>
+                        <button onclick="stampPavilion('晋派', 2)" class="w-full bg-amber-100 text-amber-700 py-3 rounded-button font-medium border border-amber-300 mt-4 active:bg-amber-200 transition-all">
+                            <i data-lucide="stamp" class="inline mr-2"></i>
+                            盖章打卡
+                        </button>
+                    </div>
+                    <div class="flex justify-between p-4 bg-cream border-t">
+                        <button onclick="prevPavilion(2)" class="text-warm text-sm">
+                            <i data-lucide="chevron-left" class="inline mr-1"></i>上一站
+                        </button>
+                        <span class="text-wood/50 text-sm">2 / 8</span>
+                        <button onclick="nextPavilion(2)" class="text-warm text-sm">
+                            下一站 <i data-lucide="chevron-right" class="inline ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 苏派 -->
+                <div class="pavilion-card bg-white rounded-soft soft-shadow overflow-hidden" data-station="3">
+                    <div class="bg-green-600 text-white px-4 py-2 text-sm font-medium flex items-center">
+                        <i data-lucide="map-pin" class="mr-2"></i>
+                        第 3/8 站 · 苏派建筑
+                    </div>
+                    <img src="assets/pavilions/苏派.jpg" alt="苏派建筑" class="w-full h-auto object-contain bg-sand/30">
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg mb-2">江南的诗意</h3>
+                        <p class="text-sm text-wood/80 leading-relaxed">
+                            苏派建筑以苏州园林为代表，小桥流水、粉墙黛瓦，将自然山水融入居住空间，体现了江南文人的审美情趣。
+                        </p>
+                        <button onclick="stampPavilion('苏派', 3)" class="w-full bg-green-100 text-green-700 py-3 rounded-button font-medium border border-green-300 mt-4 active:bg-green-200 transition-all">
+                            <i data-lucide="stamp" class="inline mr-2"></i>
+                            盖章打卡
+                        </button>
+                    </div>
+                    <div class="flex justify-between p-4 bg-cream border-t">
+                        <button onclick="prevPavilion(3)" class="text-warm text-sm">
+                            <i data-lucide="chevron-left" class="inline mr-1"></i>上一站
+                        </button>
+                        <span class="text-wood/50 text-sm">3 / 8</span>
+                        <button onclick="nextPavilion(3)" class="text-warm text-sm">
+                            下一站 <i data-lucide="chevron-right" class="inline ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 徽派 -->
+                <div class="pavilion-card bg-white rounded-soft soft-shadow overflow-hidden" data-station="4">
+                    <div class="bg-gray-600 text-white px-4 py-2 text-sm font-medium flex items-center">
+                        <i data-lucide="map-pin" class="mr-2"></i>
+                        第 4/8 站 · 徽派建筑
+                    </div>
+                    <img src="assets/pavilions/徽派.png" alt="徽派建筑" class="w-full h-auto object-contain bg-sand/30">
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg mb-2">马头墙的韵律</h3>
+                        <p class="text-sm text-wood/80 leading-relaxed">
+                            徽派建筑以马头墙和牌坊为特色，青瓦白墙、飞檐翘角，展现了徽州商人的儒雅与质朴。
+                        </p>
+                        <button onclick="stampPavilion('徽派', 4)" class="w-full bg-gray-100 text-gray-700 py-3 rounded-button font-medium border border-gray-300 mt-4 active:bg-gray-200 transition-all">
+                            <i data-lucide="stamp" class="inline mr-2"></i>
+                            盖章打卡
+                        </button>
+                    </div>
+                    <div class="flex justify-between p-4 bg-cream border-t">
+                        <button onclick="prevPavilion(4)" class="text-warm text-sm">
+                            <i data-lucide="chevron-left" class="inline mr-1"></i>上一站
+                        </button>
+                        <span class="text-wood/50 text-sm">4 / 8</span>
+                        <button onclick="nextPavilion(4)" class="text-warm text-sm">
+                            下一站 <i data-lucide="chevron-right" class="inline ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 闽派 -->
+                <div class="pavilion-card bg-white rounded-soft soft-shadow overflow-hidden" data-station="5">
+                    <div class="bg-orange-500 text-white px-4 py-2 text-sm font-medium flex items-center">
+                        <i data-lucide="map-pin" class="mr-2"></i>
+                        第 5/8 站 · 闽派建筑
+                    </div>
+                    <img src="assets/pavilions/闽派.jpg" alt="闽派建筑" class="w-full h-auto object-contain bg-sand/30">
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg mb-2">土楼的奇观</h3>
+                        <p class="text-sm text-wood/80 leading-relaxed">
+                            闽派建筑以福建土楼为代表，圆形土楼气势恢宏，聚族而居的独特建筑形式展现了客家人的团结精神。
+                        </p>
+                        <button onclick="stampPavilion('闽派', 5)" class="w-full bg-orange-100 text-orange-700 py-3 rounded-button font-medium border border-orange-300 mt-4 active:bg-orange-200 transition-all">
+                            <i data-lucide="stamp" class="inline mr-2"></i>
+                            盖章打卡
+                        </button>
+                    </div>
+                    <div class="flex justify-between p-4 bg-cream border-t">
+                        <button onclick="prevPavilion(5)" class="text-warm text-sm">
+                            <i data-lucide="chevron-left" class="inline mr-1"></i>上一站
+                        </button>
+                        <span class="text-wood/50 text-sm">5 / 8</span>
+                        <button onclick="nextPavilion(5)" class="text-warm text-sm">
+                            下一站 <i data-lucide="chevron-right" class="inline ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 粤派 -->
+                <div class="pavilion-card bg-white rounded-soft soft-shadow overflow-hidden" data-station="6">
+                    <div class="bg-blue-600 text-white px-4 py-2 text-sm font-medium flex items-center">
+                        <i data-lucide="map-pin" class="mr-2"></i>
+                        第 6/8 站 · 粤派建筑
+                    </div>
+                    <img src="assets/pavilions/粤派.jpg" alt="粤派建筑" class="w-full h-auto object-contain bg-sand/30">
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg mb-2">岭南的风情</h3>
+                        <p class="text-sm text-wood/80 leading-relaxed">
+                            粤派建筑以岭南园林和骑楼为特色，融合中西建筑元素，注重通风采光，展现了岭南文化的开放与包容。
+                        </p>
+                        <button onclick="stampPavilion('粤派', 6)" class="w-full bg-blue-100 text-blue-700 py-3 rounded-button font-medium border border-blue-300 mt-4 active:bg-blue-200 transition-all">
+                            <i data-lucide="stamp" class="inline mr-2"></i>
+                            盖章打卡
+                        </button>
+                    </div>
+                    <div class="flex justify-between p-4 bg-cream border-t">
+                        <button onclick="prevPavilion(6)" class="text-warm text-sm">
+                            <i data-lucide="chevron-left" class="inline mr-1"></i>上一站
+                        </button>
+                        <span class="text-wood/50 text-sm">6 / 8</span>
+                        <button onclick="nextPavilion(6)" class="text-warm text-sm">
+                            下一站 <i data-lucide="chevron-right" class="inline ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 川派 -->
+                <div class="pavilion-card bg-white rounded-soft soft-shadow overflow-hidden" data-station="7">
+                    <div class="bg-red-600 text-white px-4 py-2 text-sm font-medium flex items-center">
+                        <i data-lucide="map-pin" class="mr-2"></i>
+                        第 7/8 站 · 川派建筑
+                    </div>
+                    <img src="assets/pavilions/川派.jpg" alt="川派建筑" class="w-full h-auto object-contain bg-sand/30">
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg mb-2">吊脚楼的韵味</h3>
+                        <p class="text-sm text-wood/80 leading-relaxed">
+                            川派建筑以吊脚楼为特色，依山傍水、错落有致，适应西南地区多雨潮湿的气候，展现了巴蜀人民的智慧。
+                        </p>
+                        <button onclick="stampPavilion('川派', 7)" class="w-full bg-red-100 text-red-700 py-3 rounded-button font-medium border border-red-300 mt-4 active:bg-red-200 transition-all">
+                            <i data-lucide="stamp" class="inline mr-2"></i>
+                            盖章打卡
+                        </button>
+                    </div>
+                    <div class="flex justify-between p-4 bg-cream border-t">
+                        <button onclick="prevPavilion(7)" class="text-warm text-sm">
+                            <i data-lucide="chevron-left" class="inline mr-1"></i>上一站
+                        </button>
+                        <span class="text-wood/50 text-sm">7 / 8</span>
+                        <button onclick="nextPavilion(7)" class="text-warm text-sm">
+                            下一站 <i data-lucide="chevron-right" class="inline ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 海派 -->
+                <div class="pavilion-card bg-white rounded-soft soft-shadow overflow-hidden" data-station="8">
+                    <div class="bg-purple-600 text-white px-4 py-2 text-sm font-medium flex items-center">
+                        <i data-lucide="map-pin" class="mr-2"></i>
+                        第 8/8 站 · 海派建筑
+                    </div>
+                    <img src="assets/pavilions/海派.jpg" alt="海派建筑" class="w-full h-auto object-contain bg-sand/30">
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg mb-2">中西的融合</h3>
+                        <p class="text-sm text-wood/80 leading-relaxed">
+                            海派建筑以上海石库门和外滩建筑为代表，融合中西建筑风格，体现了近代中国对外开放的历史印记。
+                        </p>
+                        <button onclick="stampPavilion('海派', 8)" class="w-full bg-purple-100 text-purple-700 py-3 rounded-button font-medium border border-purple-300 mt-4 active:bg-purple-200 transition-all">
+                            <i data-lucide="stamp" class="inline mr-2"></i>
+                            盖章打卡
+                        </button>
+                    </div>
+                    <div class="flex justify-between p-4 bg-cream border-t">
+                        <button onclick="prevPavilion(8)" class="text-warm text-sm">
+                            <i data-lucide="chevron-left" class="inline mr-1"></i>上一站
+                        </button>
+                        <span class="text-wood/50 text-sm">8 / 8</span>
+                        <button class="text-warm text-sm" disabled>
+                            下一站 <i data-lucide="chevron-right" class="inline ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 护照页 -->
+    <div id="passport" class="tab-content page-transition hidden">
+        <div class="px-4 pt-6 pb-4">
+            <div class="flex items-center justify-between mb-6">
+                <button onclick="switchTab('home')" class="w-10 h-10 bg-white rounded-full soft-shadow flex items-center justify-center text-wood">
+                    <i data-lucide="arrow-left"></i>
+                </button>
+                <h2 class="text-xl font-bold">我的护照</h2>
+                <div class="w-10"></div>
+            </div>
+
+            <!-- 称号 -->
+            <div class="bg-gradient-to-br from-warm/10 to-gold/10 rounded-soft p-5 mb-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-wood/60">当前称号</p>
+                        <p id="titleBadge" class="bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-sm inline-block mt-1">初学者</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-sm text-wood/60">游览进度</p>
+                        <p class="text-xl font-bold text-warm" id="stampCount">0/8</p>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="h-2 bg-sand rounded-full overflow-hidden">
+                        <div id="progressBar" class="h-full bg-gradient-to-r from-warm to-gold transition-all duration-500" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 印章收集 -->
+            <div class="bg-white rounded-soft soft-shadow p-5 mb-6">
+                <h3 class="font-bold mb-4 flex items-center">
+                    <i data-lucide="stamp" class="text-warm mr-2"></i>
+                    印章收集
+                </h3>
+                <div class="grid grid-cols-4 gap-3">
+                    <div id="stamp-京派" class="aspect-square bg-cream rounded-xl border-2 border-dashed border-sand flex flex-col items-center justify-center">
+                        <img src="assets/stamps/stamp-京派.png" alt="京派印章" class="w-10 h-10 opacity-30 stamp-image">
+                        <span class="text-xs mt-1 text-wood/60">京派</span>
+                    </div>
+                    <div id="stamp-晋派" class="aspect-square bg-cream rounded-xl border-2 border-dashed border-sand flex flex-col items-center justify-center">
+                        <img src="assets/stamps/stamp-晋派.png" alt="晋派印章" class="w-10 h-10 opacity-30 stamp-image">
+                        <span class="text-xs mt-1 text-wood/60">晋派</span>
+                    </div>
+                    <div id="stamp-苏派" class="aspect-square bg-cream rounded-xl border-2 border-dashed border-sand flex flex-col items-center justify-center">
+                        <img src="assets/stamps/stamp-苏派.png" alt="苏派印章" class="w-10 h-10 opacity-30 stamp-image">
+                        <span class="text-xs mt-1 text-wood/60">苏派</span>
+                    </div>
+                    <div id="stamp-徽派" class="aspect-square bg-cream rounded-xl border-2 border-dashed border-sand flex flex-col items-center justify-center">
+                        <img src="assets/stamps/stamp-徽派.png" alt="徽派印章" class="w-10 h-10 opacity-30 stamp-image">
+                        <span class="text-xs mt-1 text-wood/60">徽派</span>
+                    </div>
+                    <div id="stamp-闽派" class="aspect-square bg-cream rounded-xl border-2 border-dashed border-sand flex flex-col items-center justify-center">
+                        <img src="assets/stamps/stamp-闽派.png" alt="闽派印章" class="w-10 h-10 opacity-30 stamp-image">
+                        <span class="text-xs mt-1 text-wood/60">闽派</span>
+                    </div>
+                    <div id="stamp-粤派" class="aspect-square bg-cream rounded-xl border-2 border-dashed border-sand flex flex-col items-center justify-center">
+                        <img src="assets/stamps/stamp-粤派.png" alt="粤派印章" class="w-10 h-10 opacity-30 stamp-image">
+                        <span class="text-xs mt-1 text-wood/60">粤派</span>
+                    </div>
+                    <div id="stamp-川派" class="aspect-square bg-cream rounded-xl border-2 border-dashed border-sand flex flex-col items-center justify-center">
+                        <img src="assets/stamps/stamp-川派.png" alt="川派印章" class="w-10 h-10 opacity-30 stamp-image">
+                        <span class="text-xs mt-1 text-wood/60">川派</span>
+                    </div>
+                    <div id="stamp-海派" class="aspect-square bg-cream rounded-xl border-2 border-dashed border-sand flex flex-col items-center justify-center">
+                        <img src="assets/stamps/stamp-海派.png" alt="海派印章" class="w-10 h-10 opacity-30 stamp-image">
+                        <span class="text-xs mt-1 text-wood/60">海派</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 称号说明 -->
+            <div class="bg-white rounded-soft soft-shadow p-5">
+                <h3 class="font-bold mb-4 flex items-center">
+                    <i data-lucide="award" class="text-warm mr-2"></i>
+                    称号等级
+                </h3>
+                <div class="space-y-3 text-sm">
+                    <div class="flex items-center justify-between">
+                        <span class="text-wood/60">初学者</span>
+                        <span class="text-wood">收集 0-1 枚印章</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-green-600">初级寻访者</span>
+                        <span class="text-wood">收集 2-3 枚印章</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-blue-600">中级寻访者</span>
+                        <span class="text-wood">收集 4-5 枚印章</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-purple-600">资深寻访者</span>
+                        <span class="text-wood">收集 6-7 枚印章</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-vermilion font-medium">建筑大师</span>
+                        <span class="text-wood">收集 8 枚印章</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 预约页 -->
+    <div id="reservation" class="tab-content page-transition hidden">
+        <div class="px-4 pt-6 pb-4">
+            <div class="flex items-center justify-between mb-6">
+                <button onclick="switchTab('home')" class="w-10 h-10 bg-white rounded-full soft-shadow flex items-center justify-center text-wood">
+                    <i data-lucide="arrow-left"></i>
+                </button>
+                <h2 class="text-xl font-bold">场馆预约</h2>
+                <div class="w-10"></div>
+            </div>
+
+            <!-- 已有预约 -->
+            <div id="existingReservation" class="bg-warm/10 rounded-soft p-5 mb-6 hidden">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="font-medium text-warm">我的预约</h3>
+                    <button onclick="clearReservation()" class="text-xs text-stone/60">取消预约</button>
+                </div>
+                <div class="space-y-2 text-sm">
+                    <p><span class="text-stone/60">预约编号：</span><span class="text-charcoal">ZSxxxxxx</span></p>
+                    <p><span class="text-stone/60">参观日期：</span><span class="text-charcoal" id="resDate"></span></p>
+                    <p><span class="text-stone/60">参观时段：</span><span class="text-charcoal" id="resTime"></span></p>
+                    <p><span class="text-stone/60">预约人：</span><span class="text-charcoal" id="resName"></span></p>
+                </div>
+            </div>
+
+            <!-- 预约表单 -->
+            <div class="bg-white rounded-soft soft-shadow p-6">
+                <div class="mb-6">
+                    <label class="block font-medium mb-2 text-wood/80">选择日期</label>
+                    <input type="date" id="reserveDate" class="w-full border border-sand rounded-xl p-3 bg-cream focus:outline-none focus:border-warm/50">
+                </div>
+
+                <div class="mb-6">
+                    <label class="block font-medium mb-2 text-wood/80">选择时段</label>
+                    <div class="space-y-3">
+                        <label class="flex items-center p-3 border border-sand rounded-xl bg-cream cursor-pointer hover:bg-warm/5 transition-colors">
+                            <input type="radio" name="timeSlot" value="上午09:00-11:00" class="mr-3">
+                            <span>上午场 09:00-11:00</span>
+                        </label>
+                        <label class="flex items-center p-3 border border-warm/30 rounded-xl bg-warm/5 cursor-pointer">
+                            <input type="radio" name="timeSlot" value="下午14:00-16:00" class="mr-3" checked>
+                            <span>下午场 14:00-16:00</span>
+                        </label>
+                        <label class="flex items-center p-3 border border-sand rounded-xl bg-cream cursor-pointer hover:bg-warm/5 transition-colors">
+                            <input type="radio" name="timeSlot" value="晚上18:00-20:00" class="mr-3">
+                            <span>夜场 18:00-20:00</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <label class="block font-medium mb-2 text-wood/80">姓名</label>
+                    <input type="text" id="visitorName" placeholder="请输入您的姓名" class="w-full border border-sand rounded-xl p-3 bg-cream focus:outline-none focus:border-warm/50">
+                </div>
+
+                <div class="mb-8">
+                    <label class="block font-medium mb-2 text-wood/80">手机号</label>
+                    <input type="tel" id="visitorPhone" placeholder="请输入您的手机号" class="w-full border border-sand rounded-xl p-3 bg-cream focus:outline-none focus:border-warm/50">
+                </div>
+
+                <button onclick="submitReservation()" class="w-full bg-warm/15 text-warm py-3.5 rounded-button font-medium border border-warm/30 active:bg-warm/25 transition-all duration-200 flex items-center justify-center">
+                    <i data-lucide="calendar-check" class="inline mr-2"></i>
+                    提交预约
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 关于页 -->
+    <div id="about" class="tab-content page-transition hidden">
+        <div class="px-4 pt-6 pb-4">
+            <div class="flex items-center justify-between mb-6">
+                <button onclick="switchTab('home')" class="w-10 h-10 bg-white rounded-full soft-shadow flex items-center justify-center text-wood">
+                    <i data-lucide="arrow-left"></i>
+                </button>
+                <h2 class="text-xl font-bold">关于我们</h2>
+                <div class="w-10"></div>
+            </div>
+
+            <div class="bg-white rounded-soft soft-shadow p-5 mb-6">
+                <h3 class="font-bold mb-4">筑书 · 数字展馆</h3>
+                <p class="text-sm text-wood/80 leading-relaxed mb-4">
+                    筑书是一个致力于传承中国古建筑文化的数字展馆平台。我们以"展开的书页"为核心造型，打造兼具科普教育功能与沉浸式体验的微型"古建筑博物馆"。
+                </p>
+                <p class="text-sm text-wood/80 leading-relaxed">
+                    通过学徒游览路线，您将穿越八千里路云和月，探访中国古建筑八大派系的独特魅力。从北京的红墙黄瓦，到江南的小桥流水，从福建的土楼奇观，到上海的中西融合，每一处都承载着中华民族千年的建筑智慧。
+                </p>
+            </div>
+
+            <div class="bg-white rounded-soft soft-shadow p-5 mb-6">
+                <h3 class="font-bold mb-4">游览路线</h3>
+                <div class="flex items-center justify-between text-sm mb-3">
+                    <div class="flex flex-col items-center">
+                        <div class="w-10 h-10 bg-vermilion text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
+                        <span class="text-xs text-stone mt-1">北京</span>
+                        <span class="text-xs text-warm">京派</span>
+                    </div>
+                    <div class="flex-1 h-0.5 bg-gradient-to-r from-vermilion via-amber-500 via-green-600 via-gray-600 via-orange-500 via-blue-600 via-red-600 to-purple-600 mx-3"></div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center text-sm font-bold">8</div>
+                        <span class="text-xs text-stone mt-1">上海</span>
+                        <span class="text-xs text-warm">海派</span>
+                    </div>
+                </div>
+                <div class="grid grid-cols-4 gap-2 text-xs">
+                    <div class="text-center">
+                        <span class="inline-block w-6 h-6 bg-vermilion text-white rounded text-xs flex items-center justify-center">京</span>
+                        <span class="block text-stone/60 mt-1">北京</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="inline-block w-6 h-6 bg-amber-500 text-white rounded text-xs flex items-center justify-center">晋</span>
+                        <span class="block text-stone/60 mt-1">山西</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="inline-block w-6 h-6 bg-green-600 text-white rounded text-xs flex items-center justify-center">苏</span>
+                        <span class="block text-stone/60 mt-1">江苏</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="inline-block w-6 h-6 bg-gray-600 text-white rounded text-xs flex items-center justify-center">徽</span>
+                        <span class="block text-stone/60 mt-1">安徽</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="inline-block w-6 h-6 bg-orange-500 text-white rounded text-xs flex items-center justify-center">闽</span>
+                        <span class="block text-stone/60 mt-1">福建</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="inline-block w-6 h-6 bg-blue-600 text-white rounded text-xs flex items-center justify-center">粤</span>
+                        <span class="block text-stone/60 mt-1">广东</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="inline-block w-6 h-6 bg-red-600 text-white rounded text-xs flex items-center justify-center">川</span>
+                        <span class="block text-stone/60 mt-1">四川</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="inline-block w-6 h-6 bg-purple-600 text-white rounded text-xs flex items-center justify-center">海</span>
+                        <span class="block text-stone/60 mt-1">上海</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-soft soft-shadow p-5">
+                <h3 class="font-bold mb-4">联系方式</h3>
+                <div class="space-y-3 text-sm text-wood/80">
+                    <p class="flex items-center">
+                        <i data-lucide="phone" class="text-warm mr-2"></i>
+                        咨询热线：400-888-8888
+                    </p>
+                    <p class="flex items-center">
+                        <i data-lucide="mail" class="text-warm mr-2"></i>
+                        电子邮箱：contact@zhushu.cn
+                    </p>
+                    <p class="flex items-center">
+                        <i data-lucide="clock" class="text-warm mr-2"></i>
+                        开放时间：09:00 - 20:00
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航 -->
+    <div class="fixed bottom-0 left-0 right-0 glass-effect border-t border-sand/30 z-50">
+        <div class="flex items-center justify-around py-2">
+            <button onclick="switchTab('home')" class="flex flex-col items-center py-1 px-4 tab-btn active">
+                <i data-lucide="home" class="text-lg text-warm"></i>
+                <span class="text-xs text-warm mt-1">首页</span>
+            </button>
+            <button onclick="switchTab('pavilion')" class="flex flex-col items-center py-1 px-4 tab-btn">
+                <i data-lucide="building" class="text-lg text-wood/60"></i>
+                <span class="text-xs text-wood/60 mt-1">展馆</span>
+            </button>
+            <button onclick="switchTab('passport')" class="flex flex-col items-center py-1 px-4 tab-btn">
+                <i data-lucide="book-open" class="text-lg text-wood/60"></i>
+                <span class="text-xs text-wood/60 mt-1">护照</span>
+            </button>
+            <button onclick="switchTab('reservation')" class="flex flex-col items-center py-1 px-4 tab-btn">
+                <i data-lucide="calendar" class="text-lg text-wood/60"></i>
+                <span class="text-xs text-wood/60 mt-1">预约</span>
+            </button>
+            <button onclick="switchTab('about')" class="flex flex-col items-center py-1 px-4 tab-btn">
+                <i data-lucide="info" class="text-lg text-wood/60"></i>
+                <span class="text-xs text-wood/60 mt-1">关于</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // 切换标签
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.add('hidden');
+            });
+            document.getElementById(tabName).classList.remove('hidden');
+            
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.querySelector('i').classList.remove('text-warm');
+                btn.querySelector('i').classList.add('text-wood/60');
+                btn.querySelector('span').classList.remove('text-warm');
+                btn.querySelector('span').classList.add('text-wood/60');
+            });
+            
+            const activeBtn = document.querySelector(`.tab-btn:has(button[onclick*="${tabName}"])`);
+            if (activeBtn) {
+                activeBtn.querySelector('i').classList.remove('text-wood/60');
+                activeBtn.querySelector('i').classList.add('text-warm');
+                activeBtn.querySelector('span').classList.remove('text-wood/60');
+                activeBtn.querySelector('span').classList.add('text-warm');
+            }
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 开始游览
+        function startJourney() {
+            switchTab('pavilion');
+            setTimeout(() => {
+                document.querySelector('[data-station="1"]')?.scrollIntoView({ behavior: 'smooth' });
+            }, 300);
+        }
+
+        // 下一站
+        function nextPavilion(station) {
+            const nextStation = station + 1;
+            const element = document.querySelector(`[data-station="${nextStation}"]`);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // 上一站
+        function prevPavilion(station) {
+            const prevStation = station - 1;
+            const element = document.querySelector(`[data-station="${prevStation}"]`);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // 盖章打卡
+        function stampPavilion(name, station) {
+            let stamps = JSON.parse(localStorage.getItem('stamps') || '[]');
+            if (!stamps.includes(name)) {
+                stamps.push(name);
+                localStorage.setItem('stamps', JSON.stringify(stamps));
+                alert(`恭喜！您已获得${name}印章！\n当前收集进度：${stamps.length}/8`);
+                updatePassport();
+            } else {
+                alert(`${name}印章已收集！`);
+            }
+        }
+
+        // 更新护照
+        function updatePassport() {
+            const stamps = JSON.parse(localStorage.getItem('stamps') || '[]');
+            const pavilions = ['京派', '晋派', '苏派', '徽派', '闽派', '粤派', '川派', '海派'];
+            
+            pavilions.forEach((pavilion) => {
+                const stampItem = document.getElementById(`stamp-${pavilion}`);
+                if (stampItem) {
+                    const img = stampItem.querySelector('.stamp-image');
+                    if (stamps.includes(pavilion)) {
+                        stampItem.classList.add('border-vermilion', 'bg-vermilion/5');
+                        stampItem.classList.remove('border-dashed', 'border-sand', 'bg-cream');
+                        if (img) img.classList.remove('opacity-30');
+                        stampItem.querySelector('span').classList.remove('text-wood/60');
+                        stampItem.querySelector('span').classList.add('text-vermilion');
+                    }
+                }
+            });
+            
+            const progress = (stamps.length / pavilions.length) * 100;
+            document.getElementById('progressBar').style.width = `${progress}%`;
+            document.getElementById('stampCount').textContent = `${stamps.length}/${pavilions.length}`;
+            
+            const titleBadge = document.getElementById('titleBadge');
+            let title = '初学者';
+            let bgClass = 'bg-amber-100 text-amber-700';
+            
+            if (stamps.length === 8) {
+                title = '建筑大师';
+                bgClass = 'bg-vermilion text-white';
+            } else if (stamps.length >= 6) {
+                title = '资深寻访者';
+                bgClass = 'bg-purple-100 text-purple-700';
+            } else if (stamps.length >= 4) {
+                title = '中级寻访者';
+                bgClass = 'bg-blue-100 text-blue-700';
+            } else if (stamps.length >= 2) {
+                title = '初级寻访者';
+                bgClass = 'bg-green-100 text-green-700';
+            }
+            
+            titleBadge.textContent = title;
+            titleBadge.className = `${bgClass} px-3 py-1 rounded-full text-sm`;
+        }
+
+        // 提交预约
+        function submitReservation() {
+            const date = document.getElementById('reserveDate').value;
+            const timeSlot = document.querySelector('input[name="timeSlot"]:checked').value;
+            const name = document.getElementById('visitorName').value;
+            const phone = document.getElementById('visitorPhone').value;
+            
+            if (!date || !name || !phone) {
+                alert('请填写完整信息');
+                return;
+            }
+            
+            if (!/^1\d{10}$/.test(phone)) {
+                alert('请输入正确的手机号');
+                return;
+            }
+            
+            const orderNo = 'ZS' + Date.now().toString().slice(-8);
+            
+            const reservation = {
+                orderNo,
+                date,
+                timeSlot,
+                name,
+                phone
+            };
+            localStorage.setItem('reservation', JSON.stringify(reservation));
+            showReservation(reservation);
+            alert(`预约成功！\n预约编号：${orderNo}\n参观时间：${date} ${timeSlot}`);
+        }
+
+        // 显示预约信息
+        function showReservation(reservation) {
+            const existingDiv = document.getElementById('existingReservation');
+            if (existingDiv) {
+                existingDiv.querySelector('span.text-charcoal').textContent = reservation.orderNo;
+                document.getElementById('resDate').textContent = reservation.date;
+                document.getElementById('resTime').textContent = reservation.timeSlot;
+                document.getElementById('resName').textContent = reservation.name;
+                existingDiv.classList.remove('hidden');
+            }
+        }
+
+        // 加载预约信息
+        function loadReservation() {
+            const reservation = JSON.parse(localStorage.getItem('reservation') || 'null');
+            if (reservation) {
+                showReservation(reservation);
+            }
+        }
+
+        // 取消预约
+        function clearReservation() {
+            if (confirm('确定要取消预约吗？')) {
+                localStorage.removeItem('reservation');
+                document.getElementById('existingReservation').classList.add('hidden');
+                alert('预约已取消');
+            }
+        }
+
+        // 轮播图
+        let carouselIndex = 0;
+        const carouselInner = document.querySelector('.carousel-inner');
+        const carouselDots = document.querySelectorAll('.carousel-dot');
+        
+        function nextSlide() {
+            const items = document.querySelectorAll('.carousel-item');
+            carouselIndex = (carouselIndex + 1) % items.length;
+            carouselInner.style.transform = `translateX(-${carouselIndex * 100}%)`;
+            carouselDots.forEach((dot, index) => {
+                dot.classList.toggle('bg-white/80', index === carouselIndex);
+                dot.classList.toggle('bg-white/40', index !== carouselIndex);
+            });
+        }
+
+        // 初始化
+        window.onload = function() {
+            lucide.createIcons();
+            
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            document.getElementById('reserveDate').value = tomorrow.toISOString().split('T')[0];
+            document.getElementById('reserveDate').min = tomorrow.toISOString().split('T')[0];
+            
+            setInterval(nextSlide, 4000);
+            updatePassport();
+            loadReservation();
+            
+            carouselDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    carouselIndex = index;
+                    carouselInner.style.transform = `translateX(-${carouselIndex * 100}%)`;
+                    carouselDots.forEach((d, i) => {
+                        d.classList.toggle('bg-white/80', i === carouselIndex);
+                        d.classList.toggle('bg-white/40', i !== carouselIndex);
+                    });
+                });
+            });
+        };
+    </script>
+</body>
+</html>
