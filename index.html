@@ -101,6 +101,10 @@
             opacity: 1;
         }
 
+        .pb-safe {
+            padding-bottom: env(safe-area-inset-bottom, 0);
+        }
+
         @keyframes bounceIn {
             0% {
                 opacity: 0;
@@ -158,7 +162,7 @@
 </head>
 <body>
     <div id="home" class="tab-content page-transition">
-        <div class="px-3 pt-8 pb-24 max-w-lg mx-auto">
+        <div class="px-3 pt-8 pb-32 max-w-lg mx-auto">
             <div class="flex items-center justify-between">
                 <div>
                     <h1 class="text-3xl font-bold text-warm">筑书</h1>
@@ -174,28 +178,28 @@
             <div class="relative rounded-soft overflow-hidden soft-shadow aspect-video bg-cream">
                 <div class="carousel-inner flex h-full">
                     <div class="carousel-item w-full flex-shrink-0 h-full flex items-center justify-center bg-cream">
-                        <img data-src="assets/pavilions/京派.png" alt="京派建筑" class="w-full h-full object-contain lazy-image">
+                        <img src="assets/pavilions/京派.png" alt="京派建筑" class="w-full h-full object-contain" loading="eager">
                     </div>
                     <div class="carousel-item w-full flex-shrink-0 h-full flex items-center justify-center bg-cream">
-                        <img data-src="assets/pavilions/晋派.png" alt="晋派建筑" class="w-full h-full object-contain lazy-image">
+                        <img data-src="assets/pavilions/晋派.png" alt="晋派建筑" class="w-full h-full object-contain lazy-image" loading="lazy">
                     </div>
                     <div class="carousel-item w-full flex-shrink-0 h-full flex items-center justify-center bg-cream">
-                        <img data-src="assets/pavilions/苏派.jpg" alt="苏派建筑" class="w-full h-full object-contain lazy-image">
+                        <img data-src="assets/pavilions/苏派.jpg" alt="苏派建筑" class="w-full h-full object-contain lazy-image" loading="lazy">
                     </div>
                     <div class="carousel-item w-full flex-shrink-0 h-full flex items-center justify-center bg-cream">
-                        <img data-src="assets/pavilions/徽派.png" alt="徽派建筑" class="w-full h-full object-contain lazy-image">
+                        <img data-src="assets/pavilions/徽派.png" alt="徽派建筑" class="w-full h-full object-contain lazy-image" loading="lazy">
                     </div>
                     <div class="carousel-item w-full flex-shrink-0 h-full flex items-center justify-center bg-cream">
-                        <img data-src="assets/pavilions/闽派.jpg" alt="闽派建筑" class="w-full h-full object-contain lazy-image">
+                        <img data-src="assets/pavilions/闽派.jpg" alt="闽派建筑" class="w-full h-full object-contain lazy-image" loading="lazy">
                     </div>
                     <div class="carousel-item w-full flex-shrink-0 h-full flex items-center justify-center bg-cream">
-                        <img data-src="assets/pavilions/粤派.jpg" alt="粤派建筑" class="w-full h-full object-contain lazy-image">
+                        <img data-src="assets/pavilions/粤派.jpg" alt="粤派建筑" class="w-full h-full object-contain lazy-image" loading="lazy">
                     </div>
                     <div class="carousel-item w-full flex-shrink-0 h-full flex items-center justify-center bg-cream">
-                        <img data-src="assets/pavilions/川派.jpg" alt="川派建筑" class="w-full h-full object-contain lazy-image">
+                        <img data-src="assets/pavilions/川派.jpg" alt="川派建筑" class="w-full h-full object-contain lazy-image" loading="lazy">
                     </div>
                     <div class="carousel-item w-full flex-shrink-0 h-full flex items-center justify-center bg-cream">
-                        <img data-src="assets/pavilions/海派.jpg" alt="海派建筑" class="w-full h-full object-contain lazy-image">
+                        <img data-src="assets/pavilions/海派.jpg" alt="海派建筑" class="w-full h-full object-contain lazy-image" loading="lazy">
                     </div>
                 </div>
                 <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
@@ -288,7 +292,7 @@
     </div>
 
     <div id="pavilion" class="tab-content page-transition hidden">
-        <div class="px-3 pt-6 pb-24 max-w-lg mx-auto">
+        <div class="px-3 pt-6 pb-32 max-w-lg mx-auto">
             <div class="flex items-center justify-between mb-4">
                 <button onclick="switchTab('home')" class="w-10 h-10 bg-white rounded-full soft-shadow flex items-center justify-center text-wood">
                     <i data-lucide="arrow-left"></i>
@@ -518,7 +522,7 @@
     </div>
 
     <div id="passport" class="tab-content page-transition hidden">
-        <div class="px-3 pt-6 pb-24 max-w-lg mx-auto">
+        <div class="px-3 pt-6 pb-32 max-w-lg mx-auto">
             <div class="flex items-center justify-between mb-6">
                 <button onclick="switchTab('home')" class="w-10 h-10 bg-white rounded-full soft-shadow flex items-center justify-center text-wood">
                     <i data-lucide="arrow-left"></i>
@@ -618,7 +622,7 @@
     </div>
 
     <div id="reservation" class="tab-content page-transition hidden">
-        <div class="px-3 pt-6 pb-24 max-w-lg mx-auto">
+        <div class="px-3 pt-6 pb-32 max-w-lg mx-auto">
             <div class="flex items-center justify-between mb-6">
                 <button onclick="switchTab('home')" class="w-10 h-10 bg-white rounded-full soft-shadow flex items-center justify-center text-wood">
                     <i data-lucide="arrow-left"></i>
@@ -683,7 +687,7 @@
     </div>
 
     <div id="about" class="tab-content page-transition hidden">
-        <div class="px-3 pt-6 pb-24 max-w-lg mx-auto">
+        <div class="px-3 pt-6 pb-32 max-w-lg mx-auto">
             <div class="flex items-center justify-between mb-6">
                 <button onclick="switchTab('home')" class="w-10 h-10 bg-white rounded-full soft-shadow flex items-center justify-center text-wood">
                     <i data-lucide="arrow-left"></i>
@@ -760,27 +764,27 @@
     </div>
 </div>
 
-<div class="fixed bottom-0 left-0 right-0 glass-effect border-t border-sand/30 z-50">
+<div class="fixed bottom-0 left-0 right-0 glass-effect border-t border-sand/30 z-50 pb-safe">
         <div class="flex items-center justify-around py-2">
-            <button onclick="switchTab('home')" class="flex flex-col items-center py-1 px-4 tab-btn">
-                <i data-lucide="home" class="text-lg text-warm"></i>
-                <span class="text-xs text-warm mt-1">首页</span>
+            <button data-tab="home" class="flex flex-col items-center py-2 px-3 tab-btn transition-all duration-200 active:bg-warm/10 rounded-lg">
+                <i data-lucide="home" class="text-xl text-warm"></i>
+                <span class="text-xs text-warm mt-0.5">首页</span>
             </button>
-            <button onclick="switchTab('pavilion')" class="flex flex-col items-center py-1 px-4 tab-btn">
-                <i data-lucide="building" class="text-lg text-wood/60"></i>
-                <span class="text-xs text-wood/60 mt-1">展馆</span>
+            <button data-tab="pavilion" class="flex flex-col items-center py-2 px-3 tab-btn transition-all duration-200 active:bg-warm/10 rounded-lg">
+                <i data-lucide="building" class="text-xl text-wood/50"></i>
+                <span class="text-xs text-wood/50 mt-0.5">展馆</span>
             </button>
-            <button onclick="switchTab('passport')" class="flex flex-col items-center py-1 px-4 tab-btn">
-                <i data-lucide="book-open" class="text-lg text-wood/60"></i>
-                <span class="text-xs text-wood/60 mt-1">护照</span>
+            <button data-tab="passport" class="flex flex-col items-center py-2 px-3 tab-btn transition-all duration-200 active:bg-warm/10 rounded-lg">
+                <i data-lucide="book-open" class="text-xl text-wood/50"></i>
+                <span class="text-xs text-wood/50 mt-0.5">护照</span>
             </button>
-            <button onclick="switchTab('reservation')" class="flex flex-col items-center py-1 px-4 tab-btn">
-                <i data-lucide="calendar" class="text-lg text-wood/60"></i>
-                <span class="text-xs text-wood/60 mt-1">预约</span>
+            <button data-tab="reservation" class="flex flex-col items-center py-2 px-3 tab-btn transition-all duration-200 active:bg-warm/10 rounded-lg">
+                <i data-lucide="calendar" class="text-xl text-wood/50"></i>
+                <span class="text-xs text-wood/50 mt-0.5">预约</span>
             </button>
-            <button onclick="switchTab('about')" class="flex flex-col items-center py-1 px-4 tab-btn">
-                <i data-lucide="info" class="text-lg text-wood/60"></i>
-                <span class="text-xs text-wood/60 mt-1">关于</span>
+            <button data-tab="about" class="flex flex-col items-center py-2 px-3 tab-btn transition-all duration-200 active:bg-warm/10 rounded-lg">
+                <i data-lucide="info" class="text-xl text-wood/50"></i>
+                <span class="text-xs text-wood/50 mt-0.5">关于</span>
             </button>
         </div>
     </div>
@@ -793,22 +797,39 @@
             document.getElementById(tabName).classList.remove('hidden');
 
             document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.querySelector('i').classList.remove('text-warm');
-                btn.querySelector('i').classList.add('text-wood/60');
-                btn.querySelector('span').classList.remove('text-warm');
-                btn.querySelector('span').classList.add('text-wood/60');
+                const icon = btn.querySelector('i');
+                const text = btn.querySelector('span');
+                icon.classList.remove('text-warm');
+                icon.classList.add('text-wood/50');
+                text.classList.remove('text-warm');
+                text.classList.add('text-wood/50');
+                btn.classList.remove('bg-warm/10');
             });
 
-            const activeBtn = document.querySelector(`.tab-btn[onclick*="${tabName}"]`);
+            const activeBtn = document.querySelector(`[data-tab="${tabName}"]`);
             if (activeBtn) {
-                activeBtn.querySelector('i').classList.remove('text-wood/60');
-                activeBtn.querySelector('i').classList.add('text-warm');
-                activeBtn.querySelector('span').classList.remove('text-wood/60');
-                activeBtn.querySelector('span').classList.add('text-warm');
+                const icon = activeBtn.querySelector('i');
+                const text = activeBtn.querySelector('span');
+                icon.classList.remove('text-wood/50');
+                icon.classList.add('text-warm');
+                text.classList.remove('text-wood/50');
+                text.classList.add('text-warm');
+                activeBtn.classList.add('bg-warm/10');
             }
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const tabName = btn.getAttribute('data-tab');
+                    if (tabName) {
+                        switchTab(tabName);
+                    }
+                });
+            });
+        });
 
         function startJourney() {
             switchTab('pavilion');
